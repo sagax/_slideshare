@@ -16,33 +16,33 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
-     ".gitignore",
-     "MIT-LICENSE",
-     "README.rdoc",
-     "Rakefile",
-     "VERSION",
-     "init.rb",
-     "lib/slide_share/base.rb",
-     "lib/slide_share/errors.rb",
-     "lib/slide_share/slideshows.rb",
-     "lib/slideshare.rb",
-     "slideshare.gemspec",
-     "spec/fixtures/config.yml",
-     "spec/fixtures/config_missing_api_key.yml",
-     "spec/fixtures/config_missing_shared_secret.yml",
-     "spec/fixtures/delete_slideshow.xml",
-     "spec/fixtures/edit_slideshow.xml",
-     "spec/fixtures/error_failed_auth.xml",
-     "spec/fixtures/error_not_found.xml",
-     "spec/fixtures/error_permissions.xml",
-     "spec/fixtures/get_slideshow.xml",
-     "spec/fixtures/get_slideshow_detailed.xml",
-     "spec/fixtures/sample.txt",
-     "spec/fixtures/upload_slideshow.xml",
-     "spec/slide_share/base_spec.rb",
-     "spec/slide_share/slideshows_spec.rb",
-     "spec/spec.opts",
-     "spec/spec_helper.rb"
+    ".gitignore",
+    "MIT-LICENSE",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "init.rb",
+    "lib/slide_share/base.rb",
+    "lib/slide_share/errors.rb",
+    "lib/slide_share/slideshows.rb",
+    "lib/slideshare.rb",
+    "slideshare.gemspec",
+    "spec/fixtures/config.yml",
+    "spec/fixtures/config_missing_api_key.yml",
+    "spec/fixtures/config_missing_shared_secret.yml",
+    "spec/fixtures/delete_slideshow.xml",
+    "spec/fixtures/edit_slideshow.xml",
+    "spec/fixtures/error_failed_auth.xml",
+    "spec/fixtures/error_not_found.xml",
+    "spec/fixtures/error_permissions.xml",
+    "spec/fixtures/get_slideshow.xml",
+    "spec/fixtures/get_slideshow_detailed.xml",
+    "spec/fixtures/sample.txt",
+    "spec/fixtures/upload_slideshow.xml",
+    "spec/slide_share/base_spec.rb",
+    "spec/slide_share/slideshows_spec.rb",
+    "spec/spec.opts",
+    "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/shenie/slideshare}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -51,8 +51,8 @@ Gem::Specification.new do |s|
   s.summary = %q{Ruby interface for SlideShare API}
   s.test_files = [
     "spec/slide_share/base_spec.rb",
-     "spec/slide_share/slideshows_spec.rb",
-     "spec/spec_helper.rb"
+    "spec/slide_share/slideshows_spec.rb",
+    "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then

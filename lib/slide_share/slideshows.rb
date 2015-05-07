@@ -1,16 +1,16 @@
 module SlideShare
   class Slideshows
     attr_accessor :base
-    
+
     # This method should only be called internally from an instance of
     # <tt>SlideShare::Base</tt>.
     def initialize(base) # :nodoc:
       self.base = base
     end
-    
+
     # Returns id of newly created slideshow if successful or raises an appropriate
     # exception if not. Takes the following options:
-    # 
+    #
     # * <tt>:slideshow_description</tt> - Description for the slideshow
     # * <tt>:slideshow_tags</tt> - Tags for the slideshow. Multiple tags should be separated
     #   by spaces, using quotes to create individual multiple word tags.
@@ -18,10 +18,10 @@ module SlideShare
     #   the slideshow
     # * <tt>:make_slideshow_private</tt> - Set to <tt>true/false</tt> to change the privacy
     #   setting appropriately
-    # 
+    #
     # The following options will only be used if <tt>:make_slideshow_private</tt> is set
     # <tt>true</tt>:
-    # 
+    #
     # * <tt>:generate_secret_url</tt> - Set to <tt>true/false</tt> to generate a secret URL
     # * <tt>:allow_embeds</tt> - Set to <tt>true/false</tt> to allow websites to embed
     #   the private slideshow
@@ -30,7 +30,7 @@ module SlideShare
     def create(title, filename, username, password, options = {})
       force_boolean_params_to_letters! options
       options.merge!(:username => username, :password => password,
-        :slideshow_title => title)
+                     :slideshow_title => title)
       params = base.send(:add_required_params, options).map do |key, value|
         Curl::PostField.content(key.to_s, value)
       end
@@ -61,20 +61,20 @@ module SlideShare
       options[:detailed] = detailed unless detailed.nil?
       base.send :get, "/get_slideshow", options.merge(:slideshow_id => id)
     end
-    
+
     # Returns true if successful or raises an appropriate exception if not.
     # Takes the following options:
-    # 
+    #
     # * <tt>:slideshow_title</tt> - Title for the slideshow
     # * <tt>:slideshow_description</tt> - Description for the slideshow
     # * <tt>:slideshow_tags</tt> - Tags for the slideshow. Multiple tags should be separated
     #   by spaces, using quotes to create individual multiple word tags.
     # * <tt>:make_slideshow_private</tt> - Set to <tt>true/false</tt> to change the privacy
     #   setting appropriately
-    # 
+    #
     # The following options will only be used if <tt>:make_slideshow_private</tt> is set
     # <tt>true</tt>:
-    # 
+    #
     # * <tt>:generate_secret_url</tt> - Set to <tt>true/false</tt> to generate a secret URL
     # * <tt>:allow_embeds</tt> - Set to <tt>true/false</tt> to allow websites to embed
     #   the private slideshow
@@ -83,30 +83,30 @@ module SlideShare
     def update(id, username, password, options = {})
       force_boolean_params_to_letters! options
       base.send(:post, "/edit_slideshow", options.merge(:slideshow_id => id,
-        :username => username, :password => password))
+                                                        :username => username, :password => password))
       true # This might be too naïve but should have already raised exception if unsuccessful
     end
-    
+
     # Returns true if successful or raises an appropriate exception if not.
     def delete(id, username, password)
       base.send :post, "/delete_slideshow", :slideshow_id => id,
         :username => username, :password => password
       true # This might be too naïve but should have already raised exception if unsuccessful
     end
-    
-  private
+
+    private
     def force_boolean_params_to_letters!(hash)
       [
         :make_src_public, :make_slideshow_private, :generate_secret_url,
         :allow_embeds, :share_with_contacts
       ].each do |key|
         value = hash.delete(key)
-        unless value.nil?  
+        unless value.nil?
           hash[key] = convert_to_letter(value, true)
         end
       end
     end
-    
+
     def convert_to_letter(value, force = false)
       case value
       when false, "N", nil
@@ -115,7 +115,7 @@ module SlideShare
         "Y"
       end
     end
-    
+
     def convert_to_number(value, force = false)
       case value
       when false, 0, nil
